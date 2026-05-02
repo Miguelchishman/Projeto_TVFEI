@@ -9,8 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import model.Usuario;
-import model.Filme;
 
-public class VideoDAO {
+public class UsuarioDAO {
     
 }
