@@ -9,5 +9,16 @@ package model;
  * @author Miguel
  */
 public abstract class Video {
+    private String nome, descricao, autor, tipo;
+    private int id;
+
+    public Video(String nome, String descricao, String autor, String tipo, int id) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.autor = autor;
+        this.tipo = tipo;
+        this.id = id;
+    }
+    
     
 }

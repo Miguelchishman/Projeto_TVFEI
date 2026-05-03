@@ -9,5 +9,6 @@ package model;
  * @author Miguel
  */
 public interface Situacao {
-    
+    String getSituacao();
+    void setSituacao(String situacao);
 }

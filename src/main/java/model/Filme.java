@@ -9,5 +9,15 @@ package model;
  * @author Miguel
  */
 public class Filme extends Video{
+    private int duracao;
+
+    public Filme(int duracao, String nome, String descricao, String autor, int id) {
+        super(nome, descricao, autor, "Filme", id);
+        this.duracao = duracao;
+    }
+
+    public int getDuracao() {
+        return duracao;
+    }
     
 }
