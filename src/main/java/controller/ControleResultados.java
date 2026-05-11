@@ -16,6 +16,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import view.Logado;
 import view.ResultadoPesquisa;
+import model.Video;
+import model.Filme;
+import model.Serie;
 
 public class ControleResultados {
     private ResultadoPesquisa telaResultados; 
@@ -26,14 +29,31 @@ public class ControleResultados {
     
     public DefaultListModel pesquisarNomes(String pesquisa){
         Conexao conexao = new Conexao();
-        DefaultListModel<String> model = new DefaultListModel<>();
+        DefaultListModel<Video> model = new DefaultListModel<>();
         try {
             Connection conn = conexao.getConnection();
             VideoDAO dao = new VideoDAO(conn);
             
             ResultSet resultados = dao.procurarVideos(pesquisa);
             while (resultados.next()){
-                model.addElement(resultados.getString("nome"));
+                String tipo = resultados.getString("tipo");
+                if (tipo.equals("Filme")){
+                    model.addElement(new Filme(resultados.getInt("duracao"),
+                                               resultados.getString("nome"),
+                                               resultados.getString("descricao"),
+                                               resultados.getString("autor"),
+                                               resultados.getInt("id")
+                    ));
+                } else if (tipo.equals("Serie")){
+                    model.addElement(new Serie(resultados.getInt("numTemporadas"),
+                                               resultados.getInt("numEpisodios"),
+                                               resultados.getString("situacao"),
+                                               resultados.getString("nome"),
+                                               resultados.getString("descricao"),
+                                               resultados.getString("autor"),
+                                               resultados.getInt("id")
+                    ));
+                }
             }
             
         }

@@ -1,6 +1,7 @@
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\controller\ControleCadastro.java
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\controller\ControleLogado.java
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\controller\ControleLogin.java
+C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\controller\ControleResultados.java
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\dao\Conexao.java
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\dao\UsuarioDAO.java
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\dao\VideoDAO.java
@@ -14,4 +15,5 @@ C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\model\Vid
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\view\Cadastro.java
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\view\Logado.java
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\view\Login.java
+C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\view\ResultadoPesquisa.java
 C:\Users\Miguel\Documents\NetBeansProjects\Projeto_TVFei\src\main\java\view\TelaInicial.java
