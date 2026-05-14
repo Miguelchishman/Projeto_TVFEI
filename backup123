@@ -1,0 +1,337 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict eB7l4DjKB2HLN9jbfm2wvB9ejZP7UUMl9PAUHEYDEmzoAK1CDZEbx02tdMcvxSc
+
+-- Dumped from database version 18.3
+-- Dumped by pg_dump version 18.3
+
+-- Started on 2026-05-14 20:08:51
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 223 (class 1259 OID 16455)
+-- Name: tbcurtidas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbcurtidas (
+    usuario text NOT NULL,
+    id integer NOT NULL
+);
+
+
+ALTER TABLE public.tbcurtidas OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 16474)
+-- Name: tbfavoritos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbfavoritos (
+    id integer NOT NULL,
+    usuario text NOT NULL
+);
+
+
+ALTER TABLE public.tbfavoritos OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 16421)
+-- Name: tbfilmes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbfilmes (
+    id integer CONSTRAINT tbfilmes_id_not_null1 NOT NULL,
+    duracao integer NOT NULL
+);
+
+
+ALTER TABLE public.tbfilmes OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 16433)
+-- Name: tbseries; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbseries (
+    id integer NOT NULL,
+    numtemporadas integer,
+    numepisodios integer,
+    situacao text
+);
+
+
+ALTER TABLE public.tbseries OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16399)
+-- Name: tbusuarios; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbusuarios (
+    nome text NOT NULL,
+    usuario text NOT NULL,
+    senha text NOT NULL
+);
+
+
+ALTER TABLE public.tbusuarios OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 16409)
+-- Name: tbvideos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tbvideos (
+    id integer CONSTRAINT tbfilmes_id_not_null NOT NULL,
+    nome text CONSTRAINT tbfilmes_nome_not_null NOT NULL,
+    descricao text CONSTRAINT tbfilmes_descricao_not_null NOT NULL,
+    autor text,
+    tipo text CONSTRAINT tbfilmes_tipo_not_null NOT NULL
+);
+
+
+ALTER TABLE public.tbvideos OWNER TO postgres;
+
+--
+-- TOC entry 4943 (class 0 OID 16455)
+-- Dependencies: 223
+-- Data for Name: tbcurtidas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbcurtidas (usuario, id) FROM stdin;
+1	11
+1	8
+1	9
+1	19
+1	10
+\.
+
+
+--
+-- TOC entry 4944 (class 0 OID 16474)
+-- Dependencies: 224
+-- Data for Name: tbfavoritos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbfavoritos (id, usuario) FROM stdin;
+\.
+
+
+--
+-- TOC entry 4941 (class 0 OID 16421)
+-- Dependencies: 221
+-- Data for Name: tbfilmes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbfilmes (id, duracao) FROM stdin;
+1	120
+2	95
+3	110
+4	145
+5	105
+6	88
+7	102
+8	115
+9	160
+10	130
+\.
+
+
+--
+-- TOC entry 4942 (class 0 OID 16433)
+-- Dependencies: 222
+-- Data for Name: tbseries; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbseries (id, numtemporadas, numepisodios, situacao) FROM stdin;
+11	3	24	cancelada
+12	5	50	cancelada
+13	2	16	cancelada
+17	2	12	cancelada
+18	3	30	cancelada
+19	6	60	cancelada
+14	8	80	em andamento
+15	1	10	em andamento
+16	4	32	em andamento
+20	9	201	em andamento
+\.
+
+
+--
+-- TOC entry 4939 (class 0 OID 16399)
+-- Dependencies: 219
+-- Data for Name: tbusuarios; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbusuarios (nome, usuario, senha) FROM stdin;
+Miguel1234	Miguel	123456
+Robertao	Robertao213	123321
+Jorge	Jorge123	555
+Roberto	Roberto123	321321
+1	1	1
+\.
+
+
+--
+-- TOC entry 4940 (class 0 OID 16409)
+-- Dependencies: 220
+-- Data for Name: tbvideos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tbvideos (id, nome, descricao, autor, tipo) FROM stdin;
+1	O Mistério do Café	Um suspense sobre cafeína.	João Silva	Filme
+2	Corrida Temporal	Viagem no tempo e carros.	Ana Clark	Filme
+3	Céu de Vidro	Drama sobre arquitetura.	Beto Costa	Filme
+4	A Ilha Perdida	Aventura em mar aberto.	Julia Mar	Filme
+5	Código Zero	Thriller tecnológico.	Linus T.	Filme
+6	Vento Norte	Documentário sobre o Ártico.	Edu Neves	Filme
+7	Sombras da Noite	Terror psicológico.	M. Night	Filme
+8	O Último Chef	Comédia culinária.	Paola C.	Filme
+9	Planeta B	Ficção científica espacial.	Elon M.	Filme
+10	Acordes de Ouro	Musical biográfico.	Tom J.	Filme
+11	Devs Life	A rotina de programadores.	Guido R.	Serie
+12	Império Romano	História de Roma.	History Channel	Serie
+13	Cyber Squad	Hackers salvando o mundo.	Neo S.	Serie
+14	Chef de Casa	Reality de culinária.	Gordon R.	Serie
+15	Mundos Paralelos	Fantasia épica.	J.R.R. Tolkien	Serie
+16	Detetive Particular	Casos criminais.	Sherlock H.	Serie
+17	Space Frontier	Exploração de Marte.	NASA	Serie
+18	Underground	Vida no metrô.	Metrô SP	Serie
+19	Wild Life	Natureza selvagem.	Attenborough	Serie
+20	The Office Life	Comédia de escritório.	Ricky G.	Serie
+\.
+
+
+--
+-- TOC entry 4783 (class 2606 OID 16463)
+-- Name: tbcurtidas tbcurtidas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbcurtidas
+    ADD CONSTRAINT tbcurtidas_pkey PRIMARY KEY (usuario, id);
+
+
+--
+-- TOC entry 4785 (class 2606 OID 16482)
+-- Name: tbfavoritos tbfavoritos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbfavoritos
+    ADD CONSTRAINT tbfavoritos_pkey PRIMARY KEY (id, usuario);
+
+
+--
+-- TOC entry 4777 (class 2606 OID 16420)
+-- Name: tbvideos tbfilmes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbvideos
+    ADD CONSTRAINT tbfilmes_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4779 (class 2606 OID 16427)
+-- Name: tbfilmes tbfilmes_pkey1; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbfilmes
+    ADD CONSTRAINT tbfilmes_pkey1 PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4781 (class 2606 OID 16440)
+-- Name: tbseries tbseries_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbseries
+    ADD CONSTRAINT tbseries_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4775 (class 2606 OID 16408)
+-- Name: tbusuarios tbusuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbusuarios
+    ADD CONSTRAINT tbusuarios_pkey PRIMARY KEY (usuario);
+
+
+--
+-- TOC entry 4790 (class 2606 OID 16483)
+-- Name: tbfavoritos id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbfavoritos
+    ADD CONSTRAINT id FOREIGN KEY (id) REFERENCES public.tbvideos(id) NOT VALID;
+
+
+--
+-- TOC entry 4788 (class 2606 OID 16469)
+-- Name: tbcurtidas id_video; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbcurtidas
+    ADD CONSTRAINT id_video FOREIGN KEY (id) REFERENCES public.tbvideos(id) NOT VALID;
+
+
+--
+-- TOC entry 4786 (class 2606 OID 16428)
+-- Name: tbfilmes tbfilmes_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbfilmes
+    ADD CONSTRAINT tbfilmes_id_fkey FOREIGN KEY (id) REFERENCES public.tbvideos(id) NOT VALID;
+
+
+--
+-- TOC entry 4787 (class 2606 OID 16441)
+-- Name: tbseries tbseries_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbseries
+    ADD CONSTRAINT tbseries_id_fkey FOREIGN KEY (id) REFERENCES public.tbvideos(id);
+
+
+--
+-- TOC entry 4789 (class 2606 OID 16464)
+-- Name: tbcurtidas usuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbcurtidas
+    ADD CONSTRAINT usuario FOREIGN KEY (usuario) REFERENCES public.tbusuarios(usuario) NOT VALID;
+
+
+--
+-- TOC entry 4791 (class 2606 OID 16488)
+-- Name: tbfavoritos usuario; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tbfavoritos
+    ADD CONSTRAINT usuario FOREIGN KEY (usuario) REFERENCES public.tbusuarios(usuario) NOT VALID;
+
+
+-- Completed on 2026-05-14 20:08:51
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict eB7l4DjKB2HLN9jbfm2wvB9ejZP7UUMl9PAUHEYDEmzoAK1CDZEbx02tdMcvxSc
+
