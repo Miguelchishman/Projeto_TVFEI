@@ -19,6 +19,38 @@ public abstract class Video {
         this.tipo = tipo;
         this.id = id;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    @Override
+    public String toString() {
+        return nome;
+    }
     
     
 }

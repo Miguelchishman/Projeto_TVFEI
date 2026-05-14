@@ -6,7 +6,6 @@ controller\ControleLogin.class
 model\Situacao.class
 controller\ControleLogado.class
 model\Usuario.class
-view\ResultadoPesquisa$1.class
 view\TelaInicial.class
 model\Filme.class
 main\Programa.class

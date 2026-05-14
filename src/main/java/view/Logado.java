@@ -20,6 +20,7 @@ public class Logado extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Logado.class.getName());
     
+    Usuario usuario;
     
     /**
      * Creates new form Logado
@@ -28,6 +29,7 @@ public class Logado extends javax.swing.JFrame {
         initComponents();
         lblNomeExibido.setText(usuario.getNome());
         c = new ControleLogado(this, usuario);
+        this.usuario = usuario;
     }
 
     public JLabel getLblNomeExibido() {
@@ -44,6 +46,10 @@ public class Logado extends javax.swing.JFrame {
 
     public JTextField getTxtPesquisar() {
         return txtPesquisar;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     
@@ -64,8 +70,9 @@ public class Logado extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtPesquisar = new javax.swing.JTextField();
         btnPesquisar = new javax.swing.JButton();
+        btnListaFavoritos = new javax.swing.JToggleButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("TV FEI");
 
@@ -80,6 +87,9 @@ public class Logado extends javax.swing.JFrame {
         btnPesquisar.setText("OK");
         btnPesquisar.addActionListener(this::btnPesquisarActionPerformed);
 
+        btnListaFavoritos.setText("Ver lista de favoritos");
+        btnListaFavoritos.addActionListener(this::btnListaFavoritosActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,36 +97,41 @@ public class Logado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
+                    .addComponent(btnListaFavoritos)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(59, 59, 59)
-                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblNomeExibido))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPesquisar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1)
+                        .addGap(48, 48, 48)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPesquisar)
+                .addContainerGap(74, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(lblNomeExibido)
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(lblNomeExibido))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPesquisar))
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addComponent(btnListaFavoritos, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -127,8 +142,12 @@ public class Logado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        c.abrirPesquisa(this.getTxtPesquisar().getText());
+        c.abrirPesquisa(this.getTxtPesquisar().getText(), usuario);
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnListaFavoritosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaFavoritosActionPerformed
+        c.abrirFavoritos(usuario);
+    }//GEN-LAST:event_btnListaFavoritosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +175,7 @@ public class Logado extends javax.swing.JFrame {
 //    }
     ControleLogado c;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnListaFavoritos;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
