@@ -1,4 +1,4 @@
-# FEItv 📺
+# FEItv
 
 FEItv é uma plataforma de informações sobre vídeos desenvolvida como projeto da disciplina CCM310 da FEI. Inspirada em serviços de streaming como YouTube e Netflix, a FEItv permite que usuários pesquisem, curtam e favoritam filmes e séries — sem reproduzir os vídeos.
 
